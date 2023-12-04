@@ -1,8 +1,11 @@
 #include "models.h"
 
 int main() {
-    User user("admin", "admin", true);
-    std::cout << user.getUserName() << std::endl;
-    std::cout << user.getPass() << std::endl;
+    Product Tshirt = Product("clothes", 12, 32);
+    std::cout << Tshirt.getPrice() << std::endl;
+    std::string str;
+    std::cin >> str;
+    Tshirt.setProductType(str);
+    std::cout << Tshirt.getProductType() << std::endl;
     return 0;
 }
