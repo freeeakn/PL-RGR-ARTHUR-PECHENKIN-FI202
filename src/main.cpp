@@ -1,11 +1,12 @@
 #include "models.h"
 
+using namespace std;
+
 int main() {
     Product Tshirt = Product("clothes", 12, 32);
-    std::cout << Tshirt.getPrice() << std::endl;
-    std::string str;
-    std::cin >> str;
-    Tshirt.setProductType(str);
-    std::cout << Tshirt.getProductType() << std::endl;
+    Client person("John", "Dupon", "1320242");
+    Order first;
+    first.setClient(person);
+    cout << first.getClient().getLastName() << endl;
     return 0;
 }
