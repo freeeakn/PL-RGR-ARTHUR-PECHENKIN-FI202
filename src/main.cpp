@@ -7,6 +7,7 @@ int main() {
     Client person("John", "Dupon", "1320242");
     Order first;
     first.setClient(person);
-    cout << first.getClient().getLastName() << endl;
+    first.addToCart(Tshirt);
+    cout << first.getCart()[0].getName() << endl;
     return 0;
 }

@@ -112,7 +112,7 @@ public:
         return quantity;
     }
 
-    void addToCart(Product* product) {
+    void addToCart(Product product) {
         this->quantity++;
 
         if (this->quantity == MAX_CART_SIZE)
@@ -120,7 +120,7 @@ public:
         
         if (this->quantity == 1) {
             this->cart = new Product[this->quantity];
-            this->cart[0] = *product;
+            this->cart[0] = product;
         }
 
         if (this->quantity > 1) {
@@ -130,7 +130,7 @@ public:
                 newCart[i] = this->cart[i];
             }
 
-            newCart[this->quantity - 1] = *product;
+            newCart[this->quantity - 1] = product;
 
             this->cart = newCart;
         }
