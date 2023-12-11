@@ -1,3 +1,6 @@
+#ifndef MODELS_H
+#define MODELS_H
+
 #include <iostream>
 #include <string>
 
@@ -153,3 +156,5 @@ public:
         // cart[this->quantity + 1] = nullptr;
     }
 };
+
+#endif //MODELS_H
