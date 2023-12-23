@@ -1,6 +1,9 @@
 #ifndef VIEWS_H
 #define VIEWS_H
 
-#include "controller.h"
+class View {
+    public:
+
+}
 
 #endif //VIEWS_H
