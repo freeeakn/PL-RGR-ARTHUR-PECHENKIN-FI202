@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <string>
+#include "observer.h"
 
 #define MAX_CART_SIZE 12
 
-class Product {
+class Product : public Observable {
 private:
     std::string name;
     unsigned int price;
@@ -41,14 +42,17 @@ public:
 
     void setName(std::string name) {
         this->name = name;
+        notifyUpdate();
     }
 
     void setPrice(unsigned int price) {
         this->price = price;
+        notifyUpdate();
     }
 
     void setSize(unsigned int size) {
         this->size = size;
+        notifyUpdate();
     }
 
     // void operator= (const Product& other) {
@@ -56,7 +60,7 @@ public:
     // }
 };
 
-class Client {
+class Client : public Observable {
 private:
     std::string firstName;
     std::string lastName;
@@ -85,7 +89,7 @@ public:
     }
 };
 
-class Order {
+class Order : public Observable {
 private:
     Client client;
     Product *cart;
@@ -105,6 +109,7 @@ public:
 
     void setClient(const Client& newClient) {
         client = newClient;
+        notifyUpdate();
     }
 
     Product *getCart() const {
@@ -137,6 +142,8 @@ public:
 
             this->cart = newCart;
         }
+        
+        notifyUpdate();
     }
 
     void removeFromCart(unsigned const int index) {
@@ -152,6 +159,8 @@ public:
         for (unsigned int i = index; i < this->quantity; i++) {
             cart[i] = cart[i + 1];
         }
+
+        notifyUpdate();
 
         // cart[this->quantity + 1] = nullptr;
     }
