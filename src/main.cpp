@@ -1,13 +1,9 @@
 #include "controller.h"
-#include "view.h"
 #include "models.h"
-
-using namespace std;
+#include "view.h"
 
 int main() {
-    Product model;
-    View view(&model);
-    Controller controller(&model);
-    controller.start();
-    return 0;
+  View main;
+  main.execute();
+  return 0;
 }
