@@ -10,8 +10,10 @@ private:
   View shop;
 
 public:
-  Controller() { /* shop.loadFile(); */ }
-  ~Controller() { /* shop.saveFile(); */ }
+  Controller() { /* shop.loadFile(); */
+  }
+  ~Controller() { /* shop.saveFile(); */
+  }
 
   void printMenu() {
     std::cout << "=== Menu ===\n";
@@ -26,10 +28,8 @@ public:
   }
 
   void execute() {
-    unsigned int choice = 0;
-    unsigned int indexForChange = 0;
-    unsigned int indexForRemoveProduct = 0;
-    unsigned int indexForDel = 0;
+    unsigned int choice = 0, indexForChange = 0, indexForRemoveProduct = 0,
+                 indexForDel = 0;
     while (choice != 6) {
       printMenu();
       std::cin >> choice;
