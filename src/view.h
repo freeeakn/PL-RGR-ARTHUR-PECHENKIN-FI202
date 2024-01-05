@@ -14,7 +14,6 @@ public:
   ~View() { shop.saveFile(); }
 
   void printMenu() {
-    system("clear");
     std::cout << "=== Menu ===\n";
     std::cout << "1. Print All Orders\n";
     std::cout << "2. Create Order\n";
@@ -65,7 +64,7 @@ public:
         std::cout << "Product has been removed!\n";
         break;
       case 5:
-        system("clear");
+        // system("clear");
         shop.getInfo();
         std::cout << "Select order number to delete\n";
         while (indexForDel < 1 || indexForDel > shop.getLength()) {
@@ -75,7 +74,7 @@ public:
         std::cout << "Order has been removed\n";
         break;
       case 6:
-        system("clear");
+        // system("clear");
         shop.getInfo();
         std::cout << "Select order number to add product\n";
         while (indexForAdd < 1 || indexForAdd > shop.getLength()) {
