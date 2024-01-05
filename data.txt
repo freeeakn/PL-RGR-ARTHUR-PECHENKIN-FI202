@@ -1,2 +1,1 @@
-gfd;fdsa;123;sdasas;230000;421;fsafas;2130230;3214;rfas;1234;42;
-fsafas;asfasfasfasfa;241241;asaasfas;13241;421;
+John;Doe;+123214;Tshort;2000;32;Jeans;4500;36;

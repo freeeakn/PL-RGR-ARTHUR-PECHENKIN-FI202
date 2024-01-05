@@ -1,3 +1,6 @@
+#ifndef CONTROLLER_H
+#define CONTROLLER_H
+
 #include "models.h"
 #include <fstream>
 #include <iostream>
@@ -173,7 +176,7 @@ public:
     std::cout
         << "Is this the right order? [\033[92mY\033[0m/\033[91mN\033[0m]\n";
     std::string choice = "";
-    while (choice != "Y" || choice != "N")
+    while (choice != "Y" && choice != "N")
       std::cin >> choice;
     if (choice == "Y") {
       try {
@@ -193,4 +196,27 @@ public:
       }
     }
   }
+
+  void addToOrder(unsigned const int index) {
+    Orders[index - 1].getInfo();
+    std::cout
+        << "Is this the right order? [\033[92mY\033[0m/\033[91mN\033[0m]\n";
+    std::string choice = "";
+    while (choice != "Y" && choice != "N")
+      std::cin >> choice;
+    if (choice == "Y") {
+      std::string name;
+      unsigned int price, size;
+      std::cout << "Enter name of product: ";
+      std::cin >> name;
+      std::cout << "Enter price of product: ";
+      std::cin >> price;
+      std::cout << "Enter size of product(int): ";
+      std::cin >> size;
+      Orders[index - 1].addToCart(Product(name, price, size));
+      std::cout << "Complete!";
+    }
+  }
 };
+
+#endif //CONTROLLER_H
