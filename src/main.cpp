@@ -1,7 +1,7 @@
-#include "controller.h"
+#include "view.h"
 
 int main() {
-  Controller ctrl;
-  ctrl.execute();
+  View app;
+  app.execute();
   return 0;
 }
