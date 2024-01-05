@@ -1,9 +1,7 @@
 #include "controller.h"
-#include "models.h"
-#include "view.h"
 
 int main() {
-  View main;
-  main.execute();
+  Controller ctrl;
+  ctrl.execute();
   return 0;
 }

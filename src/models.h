@@ -1,17 +1,15 @@
 #ifndef MODELS_H
 #define MODELS_H
 
-#include "observer.h"
 #include <iostream>
 #include <string>
 
 #define MAX_CART_SIZE 12
 
-class Product : public Observable {
+class Product {
 private:
   std::string name;
-  unsigned int price;
-  unsigned int size;
+  unsigned int price, size;
 
 public:
   Product() : name(""), price(0), size(0) {}
@@ -33,31 +31,22 @@ public:
 
   unsigned int getSize() const { return size; }
 
-  void setName(std::string name) {
-    this->name = name;
-    notifyUpdate();
+  void setName(std::string name) { this->name = name; }
+
+  void setPrice(unsigned int price) { this->price = price; }
+
+  void setSize(unsigned int size) { this->size = size; }
+
+  void operator=(const Product &other) {
+    this->name = other.name;
+    this->price = other.price;
+    this->size = other.size;
   }
-
-  void setPrice(unsigned int price) {
-    this->price = price;
-    notifyUpdate();
-  }
-
-  void setSize(unsigned int size) {
-    this->size = size;
-    notifyUpdate();
-  }
-
-  // void operator= (const Product& other) {
-
-  // }
 };
 
-class Client : public Observable {
+class Client {
 private:
-  std::string firstName;
-  std::string lastName;
-  std::string phone;
+  std::string firstName, lastName, phone;
 
 public:
   Client() : firstName(""), lastName(""), phone("") {}
@@ -67,14 +56,20 @@ public:
 
   ~Client() {}
 
-  std::string getFirstName() { return this->firstName; }
+  std::string getFirstName() const { return this->firstName; }
 
-  std::string getLastName() { return this->lastName; }
+  std::string getLastName() const { return this->lastName; }
 
-  std::string getPhone() { return this->phone; }
+  std::string getPhone() const { return this->phone; }
+
+  void setFirstName(std::string firstName) { this->firstName = firstName; }
+
+  void setLastName(std::string lastName) { this->lastName = lastName; }
+
+  void setPhone(std::string phone) { this->phone = phone; }
 };
 
-class Order : public Observable {
+class Order {
 private:
   Client client;
   Product *cart;
@@ -88,12 +83,25 @@ public:
       delete[] cart;
   }
 
+  void getInfo() {
+    std::cout
+        << "================================================================\n"
+        << "Client: " << client.getFirstName() << " " << client.getLastName()
+        << std::endl
+        << "Cart: \n";
+    for (unsigned int i = 0; i < quantity; i++) {
+      std::cout << "[" << i + 1 << "]"
+                << " Name: " << cart[i].getName()
+                << " Price: " << cart[i].getPrice()
+                << " Size: " << cart[i].getSize() << std::endl;
+    }
+    std::cout
+        << "================================================================\n";
+  }
+
   Client getClient() const { return client; }
 
-  void setClient(const Client &newClient) {
-    client = newClient;
-    notifyUpdate();
-  }
+  void setClient(const Client &newClient) { client = newClient; }
 
   Product *getCart() const { return cart; }
 
@@ -121,8 +129,6 @@ public:
 
       this->cart = newCart;
     }
-
-    notifyUpdate();
   }
 
   void removeFromCart(unsigned const int index) {
@@ -131,7 +137,6 @@ public:
       throw std::out_of_range("Index out of range");
     }
 
-    // delete product from cart
     delete &cart[index];
     this->quantity--;
 
@@ -139,9 +144,27 @@ public:
       cart[i] = cart[i + 1];
     }
 
-    notifyUpdate();
-
     // cart[this->quantity + 1] = nullptr;
+  }
+
+  Order &operator=(const Order &other) {
+    if (this == &other)
+      return *this;
+    this->client = other.client;
+
+    if (this->cart != nullptr)
+      delete[] this->cart;
+    this->quantity = other.quantity;
+
+    if (this->quantity > 0) {
+      this->cart = new Product[this->quantity];
+      for (unsigned int i = 0; i < this->quantity; i++)
+        this->cart[i] = other.cart[i];
+    } else {
+      this->cart = nullptr;
+    }
+
+    return *this;
   }
 };
 
