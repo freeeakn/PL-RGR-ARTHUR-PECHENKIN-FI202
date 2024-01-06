@@ -16,11 +16,14 @@ public:
     length = 0;
     Orders = new Order[length];
   }
+
   unsigned int getLength() { return length; }
+
   void getInfo() {
     for (unsigned int i = 0; i < length; i++)
       Orders[i].getInfo();
   }
+
   void newOrder() {
     Order currentOrder;
     std::string firstName;
@@ -57,7 +60,6 @@ public:
       if (cmd != "Y" && cmd != "N")
         std::cout << "\033[91mError: Unknown command\033[0m";
     } while (cmd != "N");
-
     Order *newOrders = new Order[length + 1];
     for (unsigned int i = 0; i < length; i++)
       newOrders[i] = Orders[i];
@@ -171,6 +173,7 @@ public:
           Client(newClientFirstName, newClientLastName, newClientPhone));
     }
   }
+  
   void removeFromCart(unsigned const int index) {
     Orders[index - 1].getInfo();
     std::cout

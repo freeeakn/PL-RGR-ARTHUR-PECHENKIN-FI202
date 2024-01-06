@@ -1,7 +1,6 @@
 #ifndef VIEW_H
 #define VIEW_H
 
-#include "models.h"
 #include "controller.h"
 #include <iostream>
 
