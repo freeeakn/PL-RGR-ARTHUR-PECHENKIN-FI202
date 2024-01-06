@@ -29,6 +29,7 @@ public:
   void execute() {
     unsigned int choice = 0, indexForChange = 0, indexForRemoveProduct = 0,
                  indexForDel = 0, indexForAdd = 0;
+    system("clear");
     while (choice != 7) {
       printMenu();
       std::cin >> choice;
@@ -64,7 +65,7 @@ public:
         std::cout << "Product has been removed!\n";
         break;
       case 5:
-        // system("clear");
+        system("clear");
         shop.getInfo();
         std::cout << "Select order number to delete\n";
         while (indexForDel < 1 || indexForDel > shop.getLength()) {
@@ -74,7 +75,7 @@ public:
         std::cout << "Order has been removed\n";
         break;
       case 6:
-        // system("clear");
+        system("clear");
         shop.getInfo();
         std::cout << "Select order number to add product\n";
         while (indexForAdd < 1 || indexForAdd > shop.getLength()) {

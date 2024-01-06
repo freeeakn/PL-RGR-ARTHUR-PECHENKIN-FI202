@@ -1,1 +1,1 @@
-John;Doe;+123214;Tshort;2000;32;Jeans;4500;36;
+John;Doe;+123214;Jeans;4500;36;
